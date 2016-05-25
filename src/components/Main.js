@@ -1,8 +1,18 @@
-const Main = () => {
+import React from 'react'
+import { Link } from 'react-router'
+
+const Main = ({
+	children
+}) => {
 	return (
-		<h1>
-			Hello
-		</h1>
+		<div>
+			<ul>
+				<li><Link to='/repo/Troy/react' activeStyle={{color: 'red'}}>repo</Link></li>
+				<li><Link to='/detail' activeStyle={{color: 'red'}}>detail</Link></li>
+			</ul>
+
+			{children}
+		</div>
 	)
 }
 

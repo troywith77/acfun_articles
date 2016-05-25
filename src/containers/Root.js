@@ -1,14 +1,15 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import routes from '../route'
+import { Router, Route, browserHistory } from 'react-router'
+import routes from '../config/routes'
 
 const Root  = ({
 	store
 }) => {
 	return (
-		<h1>
-		1
-		</h1>
+		<div>
+			{routes}
+		</div>
 	)
 }
 
