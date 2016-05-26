@@ -61,6 +61,8 @@ export default class App extends Component {
     		</ul>
     		<h1>{this.state.title}</h1>
       	<p dangerouslySetInnerHTML={{__html: this.state.content}}></p>
+
+      	{this.props.children}
       </div>
     );
   }
