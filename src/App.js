@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router'
 
 export default class App extends Component {
 	constructor(props) {
@@ -47,10 +48,7 @@ export default class App extends Component {
   	const list = this.state.list.map((item, id) => {
   		return (
   			<li key={id}>
-  				<a
-  				href='#'
-  				onClick={e => this.getArticle(item.contentId)}
-  				>{item.title}</a>
+  				<Link to={'/detail/'+item.contentId}>{item.title}</Link>
   			</li>
   		)
   	})
@@ -59,8 +57,6 @@ export default class App extends Component {
     		<ul>
     			{list}
     		</ul>
-    		<h1>{this.state.title}</h1>
-      	<p dangerouslySetInnerHTML={{__html: this.state.content}}></p>
 
       	{this.props.children}
       </div>

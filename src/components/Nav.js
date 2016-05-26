@@ -6,7 +6,7 @@ export default class Nav extends Component {
 		return (
 			<nav>
 				<ul>
-					<li><Link to='/type' />work</li>
+					<li><Link to='/type'>work</Link></li>
 				</ul>
 
 				{this.props.children}
