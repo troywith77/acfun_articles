@@ -10,8 +10,8 @@ const routes = (
 	<Router history={browserHistory}>
 		<Route path='/' component={Nav}>
 			<IndexRoute component={App} />
-			<Route path='/detail/:id' component={Detail} />
 		</Route>
+		<Route path='/detail/:id' component={Detail} />
 	</Router>
 )
 

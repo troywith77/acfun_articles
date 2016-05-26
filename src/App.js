@@ -6,41 +6,25 @@ export default class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			content: '',
-			title: '',
 			list: []
 		}
 	}
   componentDidMount() {
 		axios({
 			method: 'GET',
-			url: 'http://api.aixifan.com/searches/channel?channelIds=73&pageNo=1&pageSize=20&sort=5',
+			url: 'http://api.aixifan.com/searches/channel?channelIds=110&pageNo=1&pageSize=20&sort=2',
+			//综合110，游戏164，动漫文化74，漫画小说75
+			//sort： 5最新回复， 2评论最多， 4最新发布， 1围观最多
+
 			headers: {
 				deviceType: 1,
-				productID: 2000
-			}
-		})
-		.then(data => {
-			console.log(data.data.data.list)
-			this.setState({
-				list: data.data.data.list
-			})
-		})
-  }
-  getArticle(id) {
-  	axios({
-			method: 'get',
-			url: 'http://api.aixifan.com/articles/' + id,
-			headers: {
-				deviceType: 1
+				// productID: 2000
 			}
 		})
 		.then(data => {
 			console.log(data.data.data)
-			const item = data.data.data
 			this.setState({
-				content: item.article.content,
-				title: item.title
+				list: data.data.data.list
 			})
 		})
   }
@@ -54,12 +38,10 @@ export default class App extends Component {
   	})
     return (
     	<div>
-    		<ul>
-    			{list}
-    		</ul>
+			{list}
 
-      	{this.props.children}
-      </div>
+	      	{this.props.children}
+    	</div>
     );
   }
 }

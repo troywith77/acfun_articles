@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+//评论 http://mobile.acfun.tv/comment/content/list?version=4&contentId=2572788&pageSize=50&pageNo=1
+
 export default class Detail extends Component {
     constructor(props) {
         super(props)

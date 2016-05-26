@@ -4,13 +4,15 @@ import { Link } from 'react-router'
 export default class Nav extends Component {
 	render() {
 		return (
-			<nav>
-				<ul>
-					<li><Link to='/type'>work</Link></li>
-				</ul>
+			<div>
+				<nav>
+					<ul>
+						<li><Link to='/type'>工作·情感</Link></li>
+					</ul>
+				</nav>
 
 				{this.props.children}
-			</nav>
+			</div>
 		)
 	}
 }
