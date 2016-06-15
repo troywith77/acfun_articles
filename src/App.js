@@ -10,19 +10,23 @@ export default class App extends Component {
 		}
 	}
   componentDidMount() {
-		axios({
+  	const typeId = this.props.params.id
+  	this.fetchData('http://api.aixifan.com/searches/channel?channelIds='+typeId+'&pageNo=1&pageSize=20&sort=5')
+  }
+  componentWillReceiveProps(nextProp) {
+  	console.log(nextProp)
+  	const typeId = nextProp.params.id
+  	this.fetchData('http://api.aixifan.com/searches/channel?channelIds='+typeId+'&pageNo=1&pageSize=20&sort=5')
+  }
+  fetchData(url) {
+  	axios({
 			method: 'GET',
-			url: 'http://api.aixifan.com/searches/channel?channelIds=110&pageNo=1&pageSize=20&sort=2',
-			//综合110，游戏164，动漫文化74，漫画小说75
-			//sort： 5最新回复， 2评论最多， 4最新发布， 1围观最多
-
+			url: url,
 			headers: {
-				deviceType: 1,
-				// productID: 2000
+				deviceType: 1
 			}
 		})
 		.then(data => {
-			console.log(data.data.data)
 			this.setState({
 				list: data.data.data.list
 			})

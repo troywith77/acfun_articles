@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router'
 
 import App from '../App'
 import Nav from '../components/Nav'
@@ -9,7 +9,8 @@ import Detail from '../components/detail'
 const routes = (
 	<Router history={browserHistory}>
 		<Route path='/' component={Nav}>
-			<IndexRoute component={App} />
+			<Route path='/type/:id' component={App} />
+			<Redirect to="/type/110"/>
 		</Route>
 		<Route path='/detail/:id' component={Detail} />
 	</Router>
