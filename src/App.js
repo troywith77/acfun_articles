@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Tooltip } from 'antd'
+import { Table, Tooltip, Modal } from 'antd'
 import axios from 'axios'
 import { Link } from 'react-router'
 
@@ -7,8 +7,11 @@ export default class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			dataSource: []
+			dataSource: [],
+      visible: false
 		}
+    this.renderTitle = this.renderTitle.bind(this)
+    this.renderArticle = this.renderArticle.bind(this)
 	}
   componentDidMount() {
   	const typeId = this.props.params.id
@@ -33,14 +36,20 @@ export default class App extends Component {
 			})
 		})
   }
+  renderArticle() {
+    this.setState({ visible: true })
+  }
+  renderTitle(text, record) {
+    return(
+      <a
+        onClick={this.renderArticle} 
+        /*to={'/detail/'+record.contentId}*/
+      >
+        {record.title}
+      </a>
+    )
+  }
   render() {
-  	const list = this.state.dataSource.map((item, id) => {
-  		return (
-  			<li key={id}>
-  				<Link to={'/detail/'+item.contentId}>{item.title}</Link>
-  			</li>
-  		)
-  	})
     const columns = [{
       title: '用户',
       dataIndex:　'user',
@@ -54,11 +63,7 @@ export default class App extends Component {
       title: '标题',
       dataIndex:　'title',
       index: 'title',
-      render(text, record) {
-        return(
-          <Link to={'/detail/'+record.contentId}>{record.title}</Link>
-        )
-      }
+      render: this.renderTitle
     }, {
       title: '简介',
       dataIndex: 'description',
@@ -95,6 +100,19 @@ export default class App extends Component {
           columns={columns} 
           pagination
         />
+        <Modal 
+          title="第一个 Modal" 
+          visible={this.state.visible}
+          footer={[
+            <Button key="submit" type="primary" size="large" onClick={e => this.setState({ visible: false })}>
+              關 閉
+            </Button>,
+          ]}
+        >
+          <p>对话框的内容</p>
+          <p>对话框的内容</p>
+          <p>对话框的内容</p>
+        </Modal>
     	</div>
     );
   }
