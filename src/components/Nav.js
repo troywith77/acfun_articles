@@ -14,14 +14,14 @@ export default class Nav extends Component {
 	render() {
 		const items = types.map(item => {
 			return (
-				<Menu.Item key={item.key}>
+				<Menu.Item key={item.key} defaultKey="inte">
     	  	<Link to={`/type/${item.id}`}>{item.title}</Link>
     		</Menu.Item>
 			)
     })
 		return (
 			<div>
-				<Menu mode="horizontal">
+				<Menu mode="horizontal" selectedKeys="110">
 	        {items}
 	      </Menu>
 
