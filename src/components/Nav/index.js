@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Menu, Icon } from 'antd';
+import { Menu, Icon } from 'antd'
+import styles from './Nav.scss'
 
 const types = [
 	{ title: '综合', key: 'inte', id: 110 },
@@ -13,9 +14,6 @@ const types = [
 export default class Nav extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {
-			current: "inte"
-		}
 	}
 	render() {
 		const items = types.map(item => {
@@ -26,12 +24,16 @@ export default class Nav extends Component {
 			)
     })
 		return (
-			<div>
-				<Menu mode="horizontal" defaultSelectedKeys={["inte"]}>
+			<div className={styles.container}>
+				<Menu mode='horizontal' defaultSelectedKeys={['inte']}>
 					{items}
 	      </Menu>
 
 				{this.props.children}
+
+				<footer className={styles.footer}>
+					AcFun弹幕视频网 - 认真你就输啦 (・ω・)ノ- ( ゜- ゜)つロ
+				</footer>
 			</div>
 		)
 	}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, Tooltip, Modal, Button } from 'antd'
+import { Table, Tooltip, Modal, Button, Spin } from 'antd'
 import { Link } from 'react-router'
 import { getArticleList } from '../config/api'
 
@@ -7,6 +7,7 @@ class channelTable extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loading: false,
       dataSource: null,
       totalCount: null,
       pagination: {
@@ -20,10 +21,12 @@ class channelTable extends Component {
     this.fetchData(this.props.params.id, pagination.current)
   }
   fetchData(id, pageNo, sort) {
+    this.setState({ loading: true })
     getArticleList(id, pageNo, sort).then(result => {
       const data = result.data.data
       console.log(data)
       this.setState({
+        loading: false,
         dataSource: data.list,
         pagination: Object.assign({}, {
           total: data.totalCount
@@ -39,7 +42,7 @@ class channelTable extends Component {
   }
   render() {
     const columns = [{
-      title: '用户',
+      title: 'UP 主',
       dataIndex:　'user',
       index: 'user',
       render(item) {
@@ -65,29 +68,27 @@ class channelTable extends Component {
       render(text,record) {
         return (
           <Tooltip title={record.description}>
-            <span>{text.slice(0,20)}</span>
+            {
+              text.length > 38 ?
+                <span>{text.slice(0, 38)}...</span>
+                :
+                <span>{text}</span>
+            }
           </Tooltip>
         )
       }
     }, {
-      title: '标签',
-      dataIndex: 'tags',
-      index: 'tags',
-      render(text, record) {
-        let tags = text.map(item => {
-          return item
-        })
-        return (
-          <span>{tags.join(', ')}</span>
-        )
-      }
-    },{
       title: '评论数',
       dataIndex: 'comments',
       index: 'comments',
+    }, {
+      title: 'Views',
+      dataIndex: 'views',
+      index: 'views'
     }]
+
     return (
-      <div>
+      <Spin spinning={this.state.loading}>
         <Table
           dataSource={this.state.dataSource}
           columns={columns}
@@ -95,7 +96,7 @@ class channelTable extends Component {
           pagination={this.state.pagination}
           onChange={this.handleChangePagination}
         />
-      </div>
+      </Spin>
     )
   }
 }

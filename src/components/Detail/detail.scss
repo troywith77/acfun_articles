@@ -1,0 +1,16 @@
+.content {
+	font-size: 0.8rem;
+}
+
+:global{
+	.img-holder {
+		width: 100%;
+		img {
+			width: 100% !important;
+			margin: 20px auto;
+		}
+	}
+	img {
+		margin: 30px;
+	}
+}

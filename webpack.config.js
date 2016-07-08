@@ -26,7 +26,12 @@ module.exports = {
       {
         test: /\.css$/,
         loader: 'style!css',
-        // include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'node_modules/antd/')
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css?modules!sass',
+        include: path.join(__dirname, 'src')
       }
     ]
   }

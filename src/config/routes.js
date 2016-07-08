@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, IndexRedirect , browserHistory, Redirect } from 'react-router'
 import Nav from '../components/Nav'
-import Detail from '../components/detail'
+import Detail from '../components/Detail'
 import channelTable from '../components/channelTable'
 
 const routes = (
