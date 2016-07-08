@@ -1,11 +1,9 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
+// import { Provider } from 'react-redux'
+// import { Router, Route, browserHistory } from 'react-router'
 import routes from '../config/routes'
 
-const Root  = ({
-	store
-}) => {
+const Root  = () => {
 	return (
 		<div>
 			{routes}

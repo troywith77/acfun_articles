@@ -20,7 +20,7 @@ export default class Detail extends Component {
       }
     })
     .then(data => {
-      console.log(data.data.data)
+      console.log(data)
       const item = data.data.data
       this.setState({
         content: item.article.content,
