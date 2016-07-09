@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col, Spin } from 'antd'
 import { getArticleDetails } from '../../config/api'
 import styles from './detail.scss'
 
@@ -10,7 +10,8 @@ export default class Detail extends Component {
     super(props)
     this.state = {
       content: null,
-      title: null
+      title: null,
+      loading: true
     }
   }
   getArticle() {
@@ -19,7 +20,8 @@ export default class Detail extends Component {
       const item = data.data.data
       this.setState({
         content: item.article.content,
-        title: item.title
+        title: item.title,
+        loading: false
       })
     })
   }
@@ -29,7 +31,7 @@ export default class Detail extends Component {
   render() {
     const { title, content } = this.state
     return(
-      <div>
+      <Spin spinning={this.state.loading}>
         <Row>
           <Col span={12} push={6}>
             <h1 className={styles.title}>{title}</h1>
@@ -43,7 +45,7 @@ export default class Detail extends Component {
             </div>
           </Col>
         </Row>
-      </div>
+      </Spin>
     )
   }
 }

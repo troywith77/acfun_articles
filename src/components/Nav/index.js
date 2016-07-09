@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Menu, Icon } from 'antd'
+import { Menu, Icon, Row, Col } from 'antd'
 import styles from './Nav.scss'
 
 const types = [
@@ -25,10 +25,9 @@ export default class Nav extends Component {
     })
 		return (
 			<div className={styles.container}>
-				<Menu mode='horizontal' defaultSelectedKeys={['inte']}>
-					{items}
-	      </Menu>
-
+						<Menu mode='horizontal' defaultSelectedKeys={['inte']}>
+							{items}
+			      </Menu>
 				{this.props.children}
 
 				<footer className={styles.footer}>

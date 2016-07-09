@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Table, Tooltip, Modal, Button, Spin } from 'antd'
+import { Table, Tooltip, Modal, Button, Spin, Row, Col } from 'antd'
 import { Link } from 'react-router'
 import { getArticleList } from '../config/api'
+import styles from './channelTable.scss'
 
 class channelTable extends Component {
   constructor(props) {
@@ -62,41 +63,27 @@ class channelTable extends Component {
         )
       }
     }, {
-      title: '简介',
-      dataIndex: 'description',
-      index: 'description',
-      render(text,record) {
-        return (
-          <Tooltip title={record.description}>
-            {
-              text.length > 38 ?
-                <span>{text.slice(0, 38)}...</span>
-                :
-                <span>{text}</span>
-            }
-          </Tooltip>
-        )
-      }
-    }, {
       title: '评论数',
       dataIndex: 'comments',
       index: 'comments',
     }, {
       title: 'Views',
       dataIndex: 'views',
-      index: 'views'
+      index: 'views',
     }]
 
     return (
-      <Spin spinning={this.state.loading}>
-        <Table
-          dataSource={this.state.dataSource}
-          columns={columns}
-          rowKey={record => record.contentId}
-          pagination={this.state.pagination}
-          onChange={this.handleChangePagination}
-        />
-      </Spin>
+      <div>
+        <Spin spinning={this.state.loading}>
+          <Table
+            dataSource={this.state.dataSource}
+            columns={columns}
+            rowKey={record => record.contentId}
+            pagination={this.state.pagination}
+            onChange={this.handleChangePagination}
+          />
+        </Spin>
+      </div>
     )
   }
 }
