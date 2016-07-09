@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd'
-import axios from 'axios'
+import { getArticleDetails } from '../../config/api'
 import styles from './detail.scss'
 
 //评论 http://mobile.acfun.tv/comment/content/list?version=4&contentId=2572788&pageSize=50&pageNo=1
@@ -14,15 +14,8 @@ export default class Detail extends Component {
     }
   }
   getArticle() {
-    axios({
-      method: 'get',
-      url: 'http://api.aixifan.com/articles/' + this.props.params.id,
-      headers: {
-        deviceType: 1
-      }
-    })
+    getArticleDetails(this.props.params.articleId)
     .then(data => {
-      console.log(data)
       const item = data.data.data
       this.setState({
         content: item.article.content,
@@ -39,7 +32,7 @@ export default class Detail extends Component {
       <div>
         <Row>
           <Col span={12} push={6}>
-            <h1>{title}</h1>
+            <h1 className={styles.title}>{title}</h1>
           </Col>
         </Row>
         <Row>

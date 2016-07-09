@@ -8,9 +8,9 @@ const routes = (
 	<Router history={browserHistory}>
 		<Route path='/' component={Nav}>
 			<IndexRedirect to="/type/110" />
-			<Route path='/type/:id' component={channelTable} />
+			<Route path='/type/:channelId' component={channelTable} />
 		</Route>
-		<Route path='/detail/:id' component={Detail} />
+		<Route path='/detail/:articleId' component={Detail} />
 	</Router>
 )
 

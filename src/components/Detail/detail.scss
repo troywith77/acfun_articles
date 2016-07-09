@@ -1,6 +1,12 @@
 .content {
 	font-size: 0.8rem;
 }
+.title {
+	margin: 2rem 0 1rem;
+	padding-bottom: 0.4rem;
+	text-align: center;
+	border-bottom: 1px solid #eee;
+}
 
 :global{
 	.img-holder {
@@ -11,6 +17,10 @@
 		}
 	}
 	img {
-		margin: 30px;
+		margin: 30px auto;
+		width: 100% !important;
+	}
+	p {
+		text-indent: 0;
 	}
 }

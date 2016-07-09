@@ -18,7 +18,7 @@ class channelTable extends Component {
   }
   handleChangePagination(pagination) {
     console.log(pagination)
-    this.fetchData(this.props.params.id, pagination.current)
+    this.fetchData(this.props.params.channelId, pagination.current)
   }
   fetchData(id, pageNo, sort) {
     this.setState({ loading: true })
@@ -35,10 +35,10 @@ class channelTable extends Component {
     })
   }
   componentWillMount() {
-    this.fetchData(this.props.params.id)
+    this.fetchData(this.props.params.channelId)
   }
   componentWillReceiveProps(nextProp) {
-    this.fetchData(nextProp.params.id)
+    this.fetchData(nextProp.params.channelId)
   }
   render() {
     const columns = [{

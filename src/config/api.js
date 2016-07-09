@@ -15,3 +15,13 @@ export const getArticleList = ( channelId, pageNo = 1, sort = 5 ) => {
     }
   })
 }
+
+export const getArticleDetails = ( articleId ) => {
+  return axios({
+      method: 'get',
+      url: `http://api.aixifan.com/articles/${articleId}`,
+      headers: {
+        deviceType: 1
+      }
+    })
+}
