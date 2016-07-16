@@ -33,12 +33,12 @@ export default class Detail extends Component {
     return(
       <Spin spinning={this.state.loading}>
         <Row>
-          <Col span={12} push={6}>
+          <Col span={10} push={7}>
             <h1 className={styles.title}>{title}</h1>
           </Col>
         </Row>
         <Row>
-          <Col span={12} push={6}>
+          <Col span={10} push={7}>
             <div
               className={styles.content}
               dangerouslySetInnerHTML={{__html: content}}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Table, Tooltip, Modal, Button, Spin, Row, Col } from 'antd'
 import { Link } from 'react-router'
-import { getArticleList } from '../config/api'
+import { getArticleList } from '../../config/api'
 import styles from './channelTable.scss'
 
 class channelTable extends Component {
@@ -12,20 +12,18 @@ class channelTable extends Component {
       dataSource: null,
       totalCount: null,
       pagination: {
-        pageSize: 20
+        pageSize: 10
       }
     }
     this.handleChangePagination = this.handleChangePagination.bind(this)
   }
   handleChangePagination(pagination) {
-    console.log(pagination)
     this.fetchData(this.props.params.channelId, pagination.current)
   }
   fetchData(id, pageNo, sort) {
     this.setState({ loading: true })
     getArticleList(id, pageNo, sort).then(result => {
       const data = result.data.data
-      console.log(data)
       this.setState({
         loading: false,
         dataSource: data.list,

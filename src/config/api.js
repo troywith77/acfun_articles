@@ -6,7 +6,7 @@ export const getArticleList = ( channelId, pageNo = 1, sort = 5 ) => {
     url: 'http://api.aixifan.com/searches/channel',
     params: {
       channelIds: channelId,
-      pageSize: 20,
+      pageSize: 10,
       pageNo,
       sort
     },
