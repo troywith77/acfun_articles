@@ -5,10 +5,10 @@ import styles from './Nav.scss'
 
 const types = [
 	{ title: '综合', key: 'inte', id: 110 },
-	{ title: '工作·情感', key: 'work', id: 73 },
-	// { title: '游戏', key: 'game', id: 164 },
+	{ title: '工作 · 情感', key: 'work', id: 73 },
 	{ title: '动漫文化', key: 'animation', id: 74 },
-	{ title: '漫画小说', key: 'fiction', id: 75 }
+	{ title: '漫画 · 轻小说', key: 'fiction', id: 75 },
+	{ title: '游戏', key: 'game', id: 164 },
 ]
 
 export default class Nav extends Component {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Table, Tooltip, Modal, Button, Spin, Row, Col } from 'antd'
 import { Link } from 'react-router'
 import { getArticleList } from '../../config/api'
+import { formatDate } from '../../config/utils'
 import styles from './channelTable.scss'
 
 class channelTable extends Component {
@@ -24,6 +25,7 @@ class channelTable extends Component {
     this.setState({ loading: true })
     getArticleList(id, pageNo, sort).then(result => {
       const data = result.data.data
+      console.log(data)
       this.setState({
         loading: false,
         dataSource: data.list,
@@ -46,7 +48,7 @@ class channelTable extends Component {
       index: 'user',
       render(item) {
         return (
-          <span>{item.username}</span>
+          <span style={{color: '#c66'}}>{item.username}</span>
         )
       }
     }, {
@@ -61,11 +63,18 @@ class channelTable extends Component {
         )
       }
     }, {
+      title: '发布日期',
+      dataIndex: 'releaseDate',
+      index: 'releaseDate',
+      render(item) {
+        return <span>{formatDate(item)}</span>
+      }
+    },{
       title: '评论数',
       dataIndex: 'comments',
       index: 'comments',
     }, {
-      title: 'Views',
+      title: '围观',
       dataIndex: 'views',
       index: 'views',
     }]
